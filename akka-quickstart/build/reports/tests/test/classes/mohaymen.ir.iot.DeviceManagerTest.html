@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.054s</div>
+<div class="counter">0.039s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,23 @@
 </tr>
 </thead>
 <tr>
+<td class="success">testRegisterDeviceActor()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testRegisterDeviceActorWithDifferentGroups()</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">testReturnNotSameActorForSameDeviceId()</td>
-<td class="success">0.054s</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testReturnSameActorForSameDeviceId()</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,16 +102,44 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>[2024-07-24 10:54:04,683] [INFO] [akka.event.slf4j.Slf4jLogger] [iot-system-akka.actor.default-dispatcher-5] [] - Slf4jLogger started
-[2024-07-24 10:54:04,810] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a] - DeviceManager started
-[2024-07-24 10:54:04,814] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a] - Creating device group actor for group1
-[2024-07-24 10:54:04,817] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group1] - DeviceGroup group1 started
-[2024-07-24 10:54:04,818] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group1] - Creating device actor for device1
-[2024-07-24 10:54:04,819] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group1/device-device1] - Device actor group1-device1 started
-[2024-07-24 10:54:04,824] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a] - Creating device group actor for group2
-[2024-07-24 10:54:04,824] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group2] - DeviceGroup group2 started
-[2024-07-24 10:54:04,825] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-7] [akka://iot-system/user/$a/group-group2] - Creating device actor for device1
-[2024-07-24 10:54:04,826] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group2/device-device1] - Device actor group2-device1 started
+<pre>[2024-07-24 12:34:20,677] [INFO] [akka.event.slf4j.Slf4jLogger] [iot-system-akka.actor.default-dispatcher-4] [] - Slf4jLogger started
+[2024-07-24 12:34:20,692] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a] - DeviceManager started
+[2024-07-24 12:34:20,693] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a] - Creating device group actor for group
+[2024-07-24 12:34:20,693] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group] - DeviceGroup group started
+[2024-07-24 12:34:20,693] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group] - Creating device actor for device1
+[2024-07-24 12:34:20,693] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group/device-device1] - Device actor group-device1 started
+[2024-07-24 12:34:20,705] [INFO] [akka.event.slf4j.Slf4jLogger] [iot-system-akka.actor.default-dispatcher-5] [] - Slf4jLogger started
+[2024-07-24 12:34:20,715] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a] - DeviceManager started
+[2024-07-24 12:34:20,725] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a] - Creating device group actor for group1
+[2024-07-24 12:34:20,726] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group1] - DeviceGroup group1 started
+[2024-07-24 12:34:20,727] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group1] - Creating device actor for device1
+[2024-07-24 12:34:20,728] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group1/device-device1] - Device actor group1-device1 started
+[2024-07-24 12:34:20,728] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-7] [akka://iot-system/user/$a] - Creating device group actor for group2
+[2024-07-24 12:34:20,729] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group2] - DeviceGroup group2 started
+[2024-07-24 12:34:20,729] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group2] - Creating device actor for device1
+[2024-07-24 12:34:20,729] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group2/device-device1] - Device actor group2-device1 started
+[2024-07-24 12:34:20,753] [INFO] [akka.event.slf4j.Slf4jLogger] [iot-system-akka.actor.default-dispatcher-5] [] - Slf4jLogger started
+[2024-07-24 12:34:20,763] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a] - DeviceManager started
+[2024-07-24 12:34:20,764] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a] - Creating device group actor for group
+[2024-07-24 12:34:20,765] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group] - DeviceGroup group started
+[2024-07-24 12:34:20,765] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group] - Creating device actor for device1
+[2024-07-24 12:34:20,765] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group/device-device1] - Device actor group-device1 started
+[2024-07-24 12:34:20,769] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group] - Creating device actor for device2
+[2024-07-24 12:34:20,770] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-6] [akka://iot-system/user/$a/group-group/device-device2] - Device actor group-device2 started
+[2024-07-24 12:34:20,770] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group/device-device1] - Recorded temperature reading 1.0 with 0
+[2024-07-24 12:34:20,771] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-7] [akka://iot-system/user/$a/group-group/device-device2] - Recorded temperature reading 2.0 with 1
+[2024-07-24 12:34:20,783] [INFO] [akka.event.slf4j.Slf4jLogger] [iot-system-akka.actor.default-dispatcher-4] [] - Slf4jLogger started
+[2024-07-24 12:34:20,795] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a] - DeviceManager started
+[2024-07-24 12:34:20,795] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a] - Creating device group actor for group1
+[2024-07-24 12:34:20,795] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group1] - DeviceGroup group1 started
+[2024-07-24 12:34:20,795] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group1] - Creating device actor for device1
+[2024-07-24 12:34:20,796] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group1/device-device1] - Device actor group1-device1 started
+[2024-07-24 12:34:20,796] [INFO] [mohaymen.ir.iot.DeviceManager] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a] - Creating device group actor for group2
+[2024-07-24 12:34:20,798] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group2] - DeviceGroup group2 started
+[2024-07-24 12:34:20,799] [INFO] [mohaymen.ir.iot.DeviceGroup] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group2] - Creating device actor for device2
+[2024-07-24 12:34:20,799] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-5] [akka://iot-system/user/$a/group-group2/device-device2] - Device actor group2-device2 started
+[2024-07-24 12:34:20,800] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group1/device-device1] - Recorded temperature reading 1.0 with 0
+[2024-07-24 12:34:20,800] [INFO] [mohaymen.ir.iot.Device] [iot-system-akka.actor.default-dispatcher-4] [akka://iot-system/user/$a/group-group2/device-device2] - Recorded temperature reading 2.0 with 1
 </pre>
 </span>
 </div>
@@ -108,7 +151,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.6</a> at Jul 24, 2024, 10:54:04 AM</p>
+<a href="http://www.gradle.org">Gradle 7.6</a> at Jul 24, 2024, 12:34:21 PM</p>
 </div>
 </div>
 </body>
