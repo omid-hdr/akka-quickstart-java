@@ -1,13 +1,12 @@
 package mohaymen.ir.iot;
 
-import akka.actor.AbstractActor;
-import akka.actor.ActorRef;
-import akka.actor.Cancellable;
-import akka.actor.Props;
-import akka.event.LoggingAdapter;
+import akka.actor.*;
+import akka.event.*;
 import scala.concurrent.duration.FiniteDuration;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class DeviceGroupQuery extends AbstractActor {
     public static final class CollectionTimeout {}
@@ -62,6 +61,47 @@ public class DeviceGroupQuery extends AbstractActor {
     @Override
     public void postStop() {
         queryTimeoutTimer.cancel();
+    }
+
+    @Override
+    public Receive createReceive() {
+        return waitingForReplies(new HashMap<>(), actorToDeviceId.keySet());
+    }
+
+    public Receive waitingForReplies(
+            Map<String, DeviceGroup.TemperatureReading> repliesSoFar, Set<ActorRef> stillWaiting) {
+        return receiveBuilder()
+                .match(
+                        Device.RespondTemperature.class,
+                        r -> {
+                            ActorRef deviceActor = getSender();
+                            DeviceGroup.TemperatureReading reading =
+                                    r.value
+                                            .map(v -> (DeviceGroup.TemperatureReading) new DeviceGroup.Temperature(v))
+                                            .orElse(DeviceGroup.TemperatureNotAvailable.INSTANCE);
+                            receivedResponse(deviceActor, reading, stillWaiting, repliesSoFar);
+                        })
+                .match(
+                        Terminated.class,
+                        t -> {
+                            receivedResponse(
+                                    t.getActor(),
+                                    DeviceGroup.DeviceNotAvailable.INSTANCE,
+                                    stillWaiting,
+                                    repliesSoFar);
+                        })
+                .match(
+                        CollectionTimeout.class,
+                        t -> {
+                            Map<String, DeviceGroup.TemperatureReading> replies = new HashMap<>(repliesSoFar);
+                            for (ActorRef deviceActor : stillWaiting) {
+                                String deviceId = actorToDeviceId.get(deviceActor);
+                                replies.put(deviceId, DeviceGroup.DeviceTimedOut.INSTANCE);
+                            }
+                            requester.tell(new DeviceGroup.RespondAllTemperatures(requestId, replies), getSelf());
+                            getContext().stop(getSelf());
+                        })
+                .build();
     }
 
 }
