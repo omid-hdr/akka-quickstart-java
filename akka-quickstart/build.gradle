@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url "https://repo.akka.io/maven"
+    }
+}
+
+dependencies {
+  implementation 'com.typesafe.akka:akka-actor-typed_2.13:2.9.3'
+  implementation 'ch.qos.logback:logback-classic:1.2.13'
+  testImplementation 'com.typesafe.akka:akka-actor-testkit-typed_2.13:2.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation 'com.typesafe.akka:akka-actor-typed_2.13:2.6.20'
+    testImplementation 'com.typesafe.akka:akka-testkit_2.13:2.6.20'
+  testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.testng:testng:7.1.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+mainClassName = "com.example.HelloWorldMain"
+
+run {
+  standardInput = System.in
+}
